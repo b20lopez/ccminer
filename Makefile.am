@@ -178,21 +178,6 @@ scrypt/salsa_kernel.o: scrypt/salsa_kernel.cu
 
 # These kernels are for older devices (SM)
 
-scrypt/test_kernel.o: scrypt/test_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_20,code=\"sm_20,compute_20\" -o $@ -c $<
-
-scrypt/fermi_kernel.o: scrypt/fermi_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_20,code=\"sm_21,compute_20\" -o $@ -c $<
-
-scrypt/kepler_kernel.o: scrypt/kepler_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_30,code=\"sm_30,compute_30\" -o $@ -c $<
-
-scrypt/nv_kernel.o: scrypt/nv_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_30,code=\"sm_30,compute_30\" -o $@ -c $<
-
-scrypt/titan_kernel.o: scrypt/titan_kernel.cu
-	$(NVCC) $(nvcc_FLAGS) -gencode=arch=compute_35,code=\"sm_35,compute_35\" -o $@ -c $<
-
 skein.o: skein.cu
 	$(NVCC) $(nvcc_FLAGS) --maxrregcount=64 -o $@ -c $<
 
